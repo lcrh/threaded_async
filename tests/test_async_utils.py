@@ -50,9 +50,9 @@ async def wait_for_or_cancel_scaffold(
     cancel_event.set()
     await asyncio.sleep(10)
 
-  cancel_task = set_cancel_event()
-  wait_for_or_cancel_task = async_utils.wait_for_or_cancel(
-    return_result(), cancel_event, timeout)
+  cancel_task = asyncio.create_task(set_cancel_event())
+  wait_for_or_cancel_task = asyncio.create_task(async_utils.wait_for_or_cancel(
+    return_result(), cancel_event, timeout))
   done, _ = await asyncio.wait([cancel_task, wait_for_or_cancel_task],
                                return_when=asyncio.FIRST_COMPLETED)
   return list(done)[0].result()
