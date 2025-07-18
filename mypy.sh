@@ -1,2 +1,2 @@
 #!/bin/bash
-(cd src && mypy threaded_async --check-untyped-defs)
+(cd src && uv run mypy threaded_async --check-untyped-defs)

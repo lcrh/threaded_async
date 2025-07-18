@@ -132,20 +132,19 @@ execution.
 
 ## Development
 
-To work in the development environment, you will need python 3.8 and pipenv
+To work in the development environment, you will need python 3.8+ and uv
 installed on your system. The following commands can be used to download the
 code, set up the environment and run tests.
 
 ```bash
 git clone https://github.com/agentic-ai/threaded_async.git
 cd threaded_async
-pipenv sync --dev
-pipenv shell
+uv sync --all-groups
 ./presubmit.sh  # Run tests / lint / typecheck
 ```
 
 You can find the github repository
-[here](http://github.com/agentic-ai/threaded_async).
+[here](http://github.com/lcrh/threaded_async).
 
 Before submitting a pull request, please ensure `./presubmit.sh` completes
 without errors.
