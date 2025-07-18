@@ -167,7 +167,7 @@ class TestAsyncRunner(unittest.TestCase):
 
   def test_reraise_background_errors(self):
     """Tests that background errors are reraised on context exit."""
-    with self.assertRaises(threaded_async.ExceptionGroup) as c:
+    with self.assertRaises(threaded_async.TAExceptionGroup) as c:
       with threaded_async.AsyncRunner() as runner:
         async def foo(i):
           raise ValueError(i)

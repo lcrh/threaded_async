@@ -129,8 +129,10 @@ class ExceptionDetails:
   traceback: str
 
 
-class ExceptionGroup(Exception):
+class TAExceptionGroup(Exception):
   """Group of exceptions raised by background task."""
+  # TODO: Migrate to official python exception group available in newer
+  # versions.
 
   def __init__(self):
     """Create a new background task error."""
@@ -264,7 +266,7 @@ class AsyncRunner:
 
   def _reraise_pending_bg_tasks(self):
     """Reraises errors from background tasks. """
-    combined_exceptions = ExceptionGroup()
+    combined_exceptions = TAExceptionGroup()
     for t in self._tasks:
       try:
         t.reraise()
